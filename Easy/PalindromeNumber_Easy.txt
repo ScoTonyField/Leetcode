@@ -1,0 +1,32 @@
+================Solution1=================
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        result = str(x)[::-1]
+        if str(x) == result:
+            return True
+        else:
+            return False
+=======================================
+Result:
+Time: 76 ms (96.97%)
+Space: 14.1MB (5.01%)
+================Solution2=================
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        if x < 0:
+            return False
+        if x == 0:
+            return True
+        num1 = 0
+        num2 = x
+        while x > 0:
+            num1 = num1*10 + x%10
+            x = int(x/10)
+        if num1 == num2:
+            return True
+        else:
+            return False
+=======================================
+Result:
+Time: 100 ms (55.53%)
+Space: 13.9MB (5.01%)

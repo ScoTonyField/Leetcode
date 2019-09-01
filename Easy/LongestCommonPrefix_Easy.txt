@@ -1,0 +1,44 @@
+================Solution1=================
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        if not strs:
+            return ""
+        if "" in strs:
+            return ""
+        if len(strs)==1:
+            return strs[0]
+        length = len(strs)
+        com = strs[0]
+        for indx in range(1,length):
+            Min = min(len(com),len(strs[indx]))
+            for j in range(Min):
+                if com[j] != strs[indx][j]:
+                    com = com[:j]
+                    break
+                else:
+                    com = com[:Min]
+        if not com:
+            return ""
+        return com
+=======================================
+Result:
+Time: 52 ms (69.79%)
+Space: 13.8MB (5.53%)
+=======================================
+Boarder：
+1- 没有考虑“”的情况
+2- 没有考虑['aa','a']的情况
+================Solution2=================
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        if len(strs)==0:
+            return ''
+        s1=min(strs)
+        s2=max(strs)
+        for i,v in enumerate(s1):
+            if v!=s2[i]:
+                return s1[:i]
+        return s1
+=======================================
+Boarder:
+只用比较最小与最大即可
